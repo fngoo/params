@@ -86,7 +86,7 @@ echo "cp -r /root/script/3_httprobe/Arjun/* /root/script/3_httprobe/dir_$i/dir_$
 random=`shuf -i 5-10 -n 1` ; thread=`shuf -i 2-5 -n 1`
 echo "for c in "\`cat /root/script/3_httprobe/dir_$i/dir_$num/${input}\`"; do python3 arjun.py -u \$c -t 3 -d $random -o 1.txt --get" >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
 echo 'grep -oP "param\"\:\ \".*" 1.txt | grep -oP "\ \".*\"" | sed -e "s/\"//g" | sed -e "s/\ //g" > 2.txt' >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
-echo 'for param in `cat 2.txt`; do echo "$a?${param}=1" >> /root/script/3_httprobe/params_xss_test.txt; done; done' >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
+echo 'for param in `cat 2.txt`; do echo "$c?${param}=1" >> /root/script/3_httprobe/params_xss_test.txt; done; done' >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
 echo "cd /root/script/3_httprobe; rm -r /root/script/3_httprobe/dir_$i/dir_$num" >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
 done
 done
