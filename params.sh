@@ -129,7 +129,7 @@ sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe
 #xsstrike
 
 #创建目录
-x=8 ; input=/root/script/3_httprobe/params_xss_test.txt ; export x=8 ; export input=/root/script/3_httprobe/params_xss_test.txt
+x=8 ; input=params_xss_test.txt ; export x=8 ; export input=params_xss_test.txt
 for i in `seq 1 $x`
 do
 mkdir dir_$i
@@ -213,7 +213,7 @@ echo 'x=$x ; input=httprobe.txt' >> /root/script/3_httprobe/dir_$i/dir_$num/${i}
 echo "cd /root/script/3_httprobe/dir_$i/dir_$num" >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
 echo "cp -r /root/script/3_httprobe/XSStrike/* /root/script/3_httprobe/dir_$i/dir_$num" >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
 #random=`shuf -i 10-20 -n 1` ; thread=`shuf -i 3-5 -n 1`
-echo "for c in "\`cat /root/script/3_httprobe/dir_$i/dir_$num/${input}\`"; do python3 xsstrike.py -u \$c --console-log-level CRITICAL -t 20 --skip --blind >> \${output}/xss.txt" >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
+echo "for c in "\`cat /root/script/3_httprobe/dir_$i/dir_$num/${input}\`"; do python3 xsstrike.py -u \$c --console-log-level CRITICAL -t 20 --skip --blind >> \${output}/xss.txt; done" >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
 #echo 'grep -oP "param\"\:\ \".*" 1.txt | grep -oP "\ \".*\"" | sed -e "s/\"//g" | sed -e "s/\ //g" > 2.txt' >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
 #echo 'for param in `cat 2.txt`; do echo "$a?${param}=1" >> /root/script/3_httprobe/params_xss_test.txt; done; done' >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
 echo "cd /root/script/3_httprobe; rm -r /root/script/3_httprobe/dir_$i/dir_$num" >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
