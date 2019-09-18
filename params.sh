@@ -2,8 +2,8 @@
 #创建目录
 x=8 ; input=httprobe.txt ; export x=8 ; export input=httprobe.txt
 length=`wc -l $input|grep -o -P ".*?(?=\ )"`
-#dir_num=$((x*x))
-if [ $length -lt $x ]
+dir_num=$((x*x))
+if [ $length -lt $dir_num ]
 then
 i=1
 mkdir dir_$i
@@ -156,8 +156,8 @@ sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe
 #创建目录
 x=8 ; input=params_xss_test.txt ; export x=8 ; export input=params_xss_test.txt
 length=`wc -l $input|grep -o -P ".*?(?=\ )"`
-#dir_num=$((x*x))
-if [ $length -lt $x ]
+dir_num=$((x*x))
+if [ $length -lt $dir_num ]
 then
 i=1
 mkdir dir_$i
