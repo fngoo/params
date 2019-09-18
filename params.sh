@@ -1,6 +1,27 @@
 #!/bin/bash
 #创建目录
 x=8 ; input=httprobe.txt ; export x=8 ; export input=httprobe.txt
+length=`wc -l $input|grep -o -P ".*?(?=\ )"`
+#dir_num=$((x*x))
+if [ $length -lt $x ]
+then
+i=1
+mkdir dir_$i
+echo '#!/bin/bash' >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo 'x=$x ; input=httprobe.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo "cd /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo "cp -r /root/script/3_httprobe/Arjun/* /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
+random=`shuf -i 5-10 -n 1` ; thread=`shuf -i 2-5 -n 1`
+echo "for c in "\`cat /root/script/3_httprobe/dir_$i/${input}\`"; do python3 arjun.py -u \$c -t 3 -d $random -o 1.txt --get" >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo 'grep -oP "param\"\:\ \".*" 1.txt | grep -oP "\ \".*\"" | sed -e "s/\"//g" | sed -e "s/\ //g" > 2.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo 'for param in `cat 2.txt`; do echo "$c?${param}=1" >> /root/script/3_httprobe/params_xss_test.txt; done; done' >> /root/script/3_httprobe/dir_$i/${i}.sh
+bash /root/script/3_httprobe/dir_$i/${i}.sh
+cd /root/script/3_httprobe
+rm -r dir_$i
+
+
+else
+
 for i in `seq 1 $x`
 do
 mkdir dir_$i
@@ -105,12 +126,15 @@ done
 done
 cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --progress --delay 1
 
+rm exe.sh
+
 for i in `seq 1 $x`
 do
 rm -r dir_$i
 done
+fi
 
-sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe.txt ; sort -u /root/script/3_httprobe/params_xss_test.txt -o /root/script/3_httprobe/params_xss_test.txt ; rm exe.sh
+sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe.txt ; sort -u /root/script/3_httprobe/params_xss_test.txt -o /root/script/3_httprobe/params_xss_test.txt
 
 
 
@@ -130,6 +154,27 @@ sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe
 
 #创建目录
 x=8 ; input=params_xss_test.txt ; export x=8 ; export input=params_xss_test.txt
+length=`wc -l $input|grep -o -P ".*?(?=\ )"`
+#dir_num=$((x*x))
+if [ $length -lt $x ]
+then
+i=1
+mkdir dir_$i
+echo '#!/bin/bash' >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo 'x=$x ; input=httprobe.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo "cd /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo "cp -r /root/script/3_httprobe/XSStrike/* /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
+#random=`shuf -i 10-20 -n 1` ; thread=`shuf -i 3-5 -n 1`
+echo "for c in "\`cat /root/script/3_httprobe/dir_$i/${input}\`"; do python3 xsstrike.py -u \$c --console-log-level CRITICAL -t 20 --skip --blind >> \${output}/xss.txt; done" >> /root/script/3_httprobe/dir_$i/${i}.sh
+#echo 'grep -oP "param\"\:\ \".*" 1.txt | grep -oP "\ \".*\"" | sed -e "s/\"//g" | sed -e "s/\ //g" > 2.txt' >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
+#echo 'for param in `cat 2.txt`; do echo "$a?${param}=1" >> /root/script/3_httprobe/params_xss_test.txt; done; done' >> /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh
+bash /root/script/3_httprobe/dir_$i/${i}.sh
+cd /root/script/3_httprobe
+rm -r dir_$i
+
+
+else
+
 for i in `seq 1 $x`
 do
 mkdir dir_$i
@@ -234,9 +279,12 @@ done
 done
 cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --progress --delay 1
 
+rm exe.sh
+
 for i in `seq 1 $x`
 do
 rm -r dir_$i
 done
+fi
 
 mv /root/script/3_httprobe/params_xss_test.txt $output
