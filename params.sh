@@ -7,6 +7,7 @@ if [ $length -lt $x ]
 then
 i=1
 mkdir dir_$i
+cp $input /root/script/3_httprobe/dir_${i}/${input}
 echo '#!/bin/bash' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo 'x=$x ; input=httprobe.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cd /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
@@ -160,6 +161,7 @@ if [ $length -lt $x ]
 then
 i=1
 mkdir dir_$i
+cp $input /root/script/3_httprobe/dir_${i}/${input}
 echo '#!/bin/bash' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo 'x=$x ; input=httprobe.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cd /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
