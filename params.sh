@@ -9,7 +9,7 @@ for line in `cat $input`
 
 do
 
-mkdir dir_$i
+mkdir /root/script/3_httprobe/dir_$i
 echo '#!/bin/bash' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo 'input=httprobe.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cd /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
@@ -17,12 +17,12 @@ echo "cp -r /root/script/3_httprobe/Arjun/* /root/script/3_httprobe/dir_$i" >> /
 echo "python3 arjun.py -u $line -t 1 -d 5 -o 1.txt --get" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo 'grep -oP "param\"\:\ \".*" 1.txt | grep -oP "\ \".*\"" | sed -e "s/\"//g" | sed -e "s/\ //g" > 2.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo 'for param in `cat 2.txt`; do echo "$c?${param}=1" >> /root/script/3_httprobe/params_xss_test.txt; done' >> /root/script/3_httprobe/dir_$i/${i}.sh
-echo "rm -r dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo "rm -r /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "bash /root/script/3_httprobe/dir_$i/${i}.sh" >> /root/script/3_httprobe/exe.sh
 i=$((i+1))
 
 done
-cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --progress --delay 1
+cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --progress --delay 1 --load 90%
 rm /root/script/3_httprobe/exe.sh
 
 cd /root/script/3_httprobe
@@ -171,7 +171,7 @@ do
 echo "bash /root/script/3_httprobe/dir_$i/dir_$num/${i}.sh" >> exe.sh
 done
 done
-cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --progress --delay 1
+cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --progress --delay 1 --load 90%
 
 rm exe.sh
 
