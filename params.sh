@@ -28,7 +28,8 @@ rm /root/script/3_httprobe/exe.sh
 cd /root/script/3_httprobe
 
 sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe.txt ; sort -u /root/script/3_httprobe/params_xss_test.txt -o /root/script/3_httprobe/params_xss_test.txt
-
+grep ".json" /root/script/3_httprobe/httprobe.txt >> /root/script/3_httprobe/httprobe_json.txt
+sed -e "s/.json/.html/g/" /root/script/3_httprobe/httprobe_json.txt >> /root/script/3_httprobe/httprobe.txt ; rm /root/script/3_httprobe/httprobe_json.txt
 
 
 
