@@ -15,7 +15,7 @@ echo '#!/bin/bash' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo 'input=httprobe.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cd /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cp -r /root/script/3_httprobe/Arjun/* /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
-echo "python3 arjun.py -u \"$line\" -t 2 -d 0 -o 1.txt --get" >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo "python3 arjun.py -u \"$line\" -t 1 -d 0 -o 1.txt --get" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo 'grep -oP "param\"\:\ \".*" 1.txt | grep -oP "\ \".*\"" | sed -e "s/\"//g" | sed -e "s/\ //g" > 2.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo 'for param in `cat 2.txt`; do line=$(head -$num /root/script/3_httprobe/$input | tail -1) ; echo "${line}?${param}=1" >> /root/script/3_httprobe/params_xss_test.txt; num=$((num+1)) ; done' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "rm -r /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
