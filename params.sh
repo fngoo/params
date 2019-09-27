@@ -61,7 +61,7 @@ mkdir /root/script/3_httprobe/dir_$i
 echo '#!/bin/bash' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo 'input=params_xss_test.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cd /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
-echo "cat $line >> /root/script/3_httprobe/dir_${i}/${input}" >> /root/script/3_httprobe/dir_${i}/${i}.sh
+echo "cat '$line' >> /root/script/3_httprobe/dir_${i}/${input}" >> /root/script/3_httprobe/dir_${i}/${i}.sh
 echo "cp -r /root/script/3_httprobe/XSStrike/* /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "for c in "\`cat /root/script/3_httprobe/dir_$i/${input}\`"; do python3 xsstrike.py -u \"\$c\" --console-log-level CRITICAL --skip --blind >> \${output}/xss.txt; done" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cd /root/script/3_httprobe; rm -r /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
