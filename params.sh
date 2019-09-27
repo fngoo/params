@@ -23,7 +23,7 @@ echo "bash /root/script/3_httprobe/dir_$i/${i}.sh" >> /root/script/3_httprobe/ex
 i=$((i+1))
 
 done
-cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --progress --delay 1
+cat /root/script/3_httprobe/exe.sh | parallel -j0 -N 200 --pipe parallel -j0 --progress --delay 1
 rm /root/script/3_httprobe/exe.sh
 
 cd /root/script/3_httprobe
@@ -69,7 +69,7 @@ echo "bash /root/script/3_httprobe/dir_$i/${i}.sh" >> /root/script/3_httprobe/ex
 i=$((i+1))
 
 done
-cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --progress --delay 1
+cat /root/script/3_httprobe/exe.sh | parallel -j0 -N 200 --pipe parallel -j0 --progress --delay 1
 rm /root/script/3_httprobe/exe.sh
 rm dir_* -r
 
