@@ -73,7 +73,7 @@ cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --progress --delay 0.5
 rm /root/script/3_httprobe/exe.sh
 rm dir_* -r
 
-sort -u $output/xss.txt -r $output/xss.txt
+sort -u $output/xss.txt -o $output/xss.txt
 
 rm /root/script/3_httprobe/params_xss_test.txt
 ls ; wc -l $output/xss.txt
