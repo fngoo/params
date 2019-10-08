@@ -63,7 +63,7 @@ echo 'input=params_xss_test.txt' >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cd /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "echo '$line' >> /root/script/3_httprobe/dir_${i}/${input}" >> /root/script/3_httprobe/dir_${i}/${i}.sh
 echo "cp -r /root/script/3_httprobe/XSStrike/* /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
-echo "for c in "\`cat /root/script/3_httprobe/dir_$i/${input}\`"; do echo "$c" >> \${output}/xss.txt ; echo '------- ------------ ------------ -------------' >> \${output}/xss.txt ; python3 xsstrike.py -u \"\$c\" --skip --blind >> \${output}/xss.txt ; echo;echo;echo;echo;echo; done" >> /root/script/3_httprobe/dir_$i/${i}.sh
+echo "for c in "\`cat /root/script/3_httprobe/dir_$i/${input}\`"; do echo \"\$c\" >> \${output}/xss.txt ; echo '------- ------------ ------------ -------------' >> \${output}/xss.txt ; python3 xsstrike.py -u \"\$c\" --skip --blind >> \${output}/xss.txt ; echo ' ' >> \${output}/xss.txt;echo ' ' >> \${output}/xss.txt;echo ' ' >> \${output}/xss.txt;echo ' ' >> \${output}/xss.txt;echo ' ' >> \${output}/xss.txt; done; grep -v \"XSStrike\" \${output}/xss.txt | grep -v \"WAF Status\" | grep -v \"No reflection\" >> xss.txt ; mv xss.txt \${output}/xss.txt" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cd /root/script/3_httprobe; rm -r /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "bash /root/script/3_httprobe/dir_$i/${i}.sh" >> /root/script/3_httprobe/exe.sh
 i=$((i+1))
