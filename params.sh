@@ -33,7 +33,6 @@ sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe
 grep ".json" /root/script/3_httprobe/httprobe.txt >> /root/script/3_httprobe/httprobe_json.txt
 sed -e "s/.json/.html/g" /root/script/3_httprobe/httprobe_json.txt >> /root/script/3_httprobe/params_xss_test.txt ; rm /root/script/3_httprobe/httprobe_json.txt
 cat /root/script/3_httprobe/params_xss_test.txt >> /root/script/3_httprobe/httprobe.txt ; sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe.txt ; rm /root/script/3_httprobe/params_xss_test.txt
-
 ls ; wc -l $input ; du -h
 
 
@@ -77,3 +76,5 @@ rm dir_* -r
 
 rm /root/script/3_httprobe/params_xss_test.txt
 ls ; wc -l $output/xss.txt
+sed "s,https://xsshunternihao.xss.ht,%0d%0aheader:CRLF,g" /root/script/3_httprobe/httprobe.txt >> /root/script/3_httprobe/httprob1e.txt ; cat /root/script/3_httprobe/httprob1e.txt >> /root/script/3_httprobe/httprobe.txt ; rm /root/script/3_httprobe/httprob1e.txt
+
