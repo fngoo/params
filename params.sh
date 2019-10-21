@@ -23,7 +23,7 @@ echo "bash /root/script/3_httprobe/dir_$i/${i}.sh" >> /root/script/3_httprobe/ex
 i=$((i+1))
 
 done
-cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --delay 0.6 --retries 1 --timeout 360 --load 95% --memfree 1G
+cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --delay 0.6 --retries 1 --timeout 360 --memfree 1G
 rm /root/script/3_httprobe/exe.sh
 rm /root/script/3_httprobe/dir_* -r
 
@@ -70,11 +70,11 @@ echo "bash /root/script/3_httprobe/dir_$i/${i}.sh" >> /root/script/3_httprobe/ex
 i=$((i+1))
 
 done
-cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --delay 0.6 --retries 1 --timeout 360 --load 95% --memfree 1G
+cat /root/script/3_httprobe/exe.sh | parallel --jobs 0 --delay 0.6 --retries 1 --timeout 360 --memfree 1G
 rm /root/script/3_httprobe/exe.sh
 rm dir_* -r
 
 rm /root/script/3_httprobe/params_xss_test.txt
 ls ; wc -l $output/xss.txt
 sed "s,https://xsshunternihao.xss.ht,%0d%0aheader:CRLFheader,g" /root/script/3_httprobe/httprobe.txt >> /root/script/3_httprobe/httprob1e.txt ; cat /root/script/3_httprobe/httprob1e.txt >> /root/script/3_httprobe/httprobe.txt ; rm /root/script/3_httprobe/httprob1e.txt
-
+data >> /root/date.txt
