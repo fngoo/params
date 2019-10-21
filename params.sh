@@ -77,4 +77,4 @@ rm dir_* -r
 rm /root/script/3_httprobe/params_xss_test.txt
 ls ; wc -l $output/xss.txt
 sed "s,https://xsshunternihao.xss.ht,%0d%0aheader:CRLFheader,g" /root/script/3_httprobe/httprobe.txt >> /root/script/3_httprobe/httprob1e.txt ; cat /root/script/3_httprobe/httprob1e.txt >> /root/script/3_httprobe/httprobe.txt ; rm /root/script/3_httprobe/httprob1e.txt
-data >> /root/date.txt
+date "+%Y-%m-%d_%H:%M:%S" >> /root/date.txt ; echo 'params' >> /root/date.txt
