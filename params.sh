@@ -1,5 +1,6 @@
 #!/bin/bash
 cd /root/script/3_httprobe
+vl httprobe.txt | grep -v "\[50" | grep -oP "http.*" >> httprobe1.txt ; mv httprobe1.txt httprobe.txt ; sort -u httprobe.txt -o httprobe.txt
 
 input=httprobe.txt ; export input=httprobe.txt
 i=1
