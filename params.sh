@@ -68,7 +68,7 @@ echo "echo '$line' >> /root/script/3_httprobe/dir_${i}/${input}" >> /root/script
 echo "cp -r /root/script/3_httprobe/XSStrike/* /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "for c in "\`cat /root/script/3_httprobe/dir_$i/${input}\`"; do echo \" \" >> /root/script/3_httprobe/dir_${i}/xss.txt ; echo \" \" >> /root/script/3_httprobe/dir_${i}/xss.txt ; echo \" \" >> /root/script/3_httprobe/dir_${i}/xss.txt ; echo \"\$c\" >> /root/script/3_httprobe/dir_${i}/xss.txt ; echo '------- ------------ ------------ -------------' >> /root/script/3_httprobe/dir_${i}/xss.txt ; python3 xsstrike.py -u \"\$c\" --skip --blind >> /root/script/3_httprobe/dir_${i}/xss.txt ; line=\`cat /root/script/3_httprobe/dir_${i}/xss.txt | grep Efficiency\` ; if [ \"\$line\" = \"\" ]; then > /root/script/3_httprobe/dir_${i}/xss.txt ; fi; cat /root/script/3_httprobe/dir_${i}/xss.txt | sed \"/Progress/d\" >> \${output}/xsstrike.txt ; rm /root/script/3_httprobe/dir_${i}/xss.txt; done" >> /root/script/3_httprobe/dir_$i/${i}.sh
 echo "cd /root/script/3_httprobe; rm -r /root/script/3_httprobe/dir_$i" >> /root/script/3_httprobe/dir_$i/${i}.sh
-echo "timeout 22 bash /root/script/3_httprobe/dir_$i/${i}.sh" >> /root/script/3_httprobe/exe.sh
+echo "timeout 36 bash /root/script/3_httprobe/dir_$i/${i}.sh" >> /root/script/3_httprobe/exe.sh
 i=$((i+1))
 
 done
