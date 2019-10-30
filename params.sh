@@ -52,7 +52,7 @@ ls ; wc -l $input ; du -h
 #创建目录
 output=$output ; export output=$output
 rm -rf /root/script/3_httprobe/XSStrike
-git clone https://github.com/s0md3v/XSStrike ; cd /root/script/3_httprobe/XSStrike ; pip3 install -r requirements.txt ; cd /root/script/3_httprobe ; git clone https://github.com/fngoo/xssconfig ; mv xssconfig/config.py XSStrike/core/config.py ; rm -rf xssconfig
+cd /root/script/3_httprobe ; git clone https://github.com/s0md3v/XSStrike ; cd /root/script/3_httprobe/XSStrike ; pip3 install -r requirements.txt
 i=1
 echo '#!/bin/bash' >> /root/script/3_httprobe/exe.sh
 
