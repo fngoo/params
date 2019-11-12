@@ -55,6 +55,7 @@ cd /root/script/3_httprobe ; git clone https://github.com/s0md3v/XSStrike ; cd /
 i=1
 echo '#!/bin/bash' >> /root/script/3_httprobe/exe.sh
 
+cd /root/script/3_httprobe
 for line in `cat $input`
 do
 
