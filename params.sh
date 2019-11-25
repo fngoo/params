@@ -51,6 +51,7 @@ ls ; wc -l $input ; du -h
 #创建目录
 output=$output ; export output=$output
 rm -rf /root/script/3_httprobe/XSStrike
+cd /root/script/3_httprobe ; git clone https://github.com/s0md3v/XSStrike ; cd /root/script/3_httprobe/XSStrike ; pip3 install -r requirements.txt
 bash /root/script/xss.sh
 i=1
 echo '#!/bin/bash' >> /root/script/3_httprobe/exe.sh
