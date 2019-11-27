@@ -56,6 +56,7 @@ bash /root/script/xss.sh
 i=1
 echo '#!/bin/bash' >> /root/script/3_httprobe/exe.sh
 
+shuf /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe1.txt ; mv /root/script/3_httprobe/httprobe1.txt /root/script/3_httprobe/httprobe.txt
 cd /root/script/3_httprobe
 for line in `cat $input`
 do
