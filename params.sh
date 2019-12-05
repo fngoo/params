@@ -34,6 +34,8 @@ grep ".json" /root/script/3_httprobe/httprobe.txt >> /root/script/3_httprobe/htt
 sed -e "s/.json/.html/g" /root/script/3_httprobe/httprobe_json.txt >> /root/script/3_httprobe/params_xss_test.txt ; rm /root/script/3_httprobe/httprobe_json.txt
 cat /root/script/3_httprobe/params_xss_test.txt >> /root/script/3_httprobe/httprobe.txt ; sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe.txt ; rm /root/script/3_httprobe/params_xss_test.txt
 ls ; wc -l $input ; du -h
+vl -s 50 httprobe.txt | grep -v "\[50" | grep -v "\[404" | grep -oP "http.*" >> httprobe1.txt ; mv httprobe1.txt httprobe.txt ; sort -u httprobe.txt -o httprobe.txt
+
 
 
 
