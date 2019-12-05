@@ -84,4 +84,16 @@ rm /root/script/3_httprobe/params_xss_test.txt
 ls ; wc -l $output/xss.txt
 sed "s,https://xsshunternihao.xss.ht,%0d%0aheader:CRLFheader,g" /root/script/3_httprobe/httprobe.txt >> /root/script/3_httprobe/httprob1e.txt ; cat /root/script/3_httprobe/httprob1e.txt >> /root/script/3_httprobe/httprobe.txt ; rm /root/script/3_httprobe/httprob1e.txt
 date "+%Y-%m-%d_%H:%M:%S" >> /root/date.txt ; echo 'params' >> /root/date.txt
+
+#Eyewitness
+cd /root/script/4_getjs
+rm -r EyeWitness
+cd /root/script/4_getjs
+git clone https://github.com/FortyNorthSecurity/EyeWitness
+cd EyeWitness/setup ; bash setup.sh ; bash setup.sh ; pip3 install --upgrade pyasn1-modules
+mkdir $output/httprobe
+mkdir /root/z_juice/httprobe
+cd /root/script/4_getjs/EyeWitness
+python3 EyeWitness.py -f /root/script/3_httprobe/httprobe.txt --timeout 16 --web --no-prompt -d $output/httprobe
+cp $output/httprobe/screens/* /root/z_juice/httprobe
 exit
