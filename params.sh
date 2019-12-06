@@ -4,7 +4,7 @@ rm -rf /root/script/3_httprobe/Arjun
 git clone https://github.com/s0md3v/Arjun
 input=httprobe.txt ; export input=httprobe.txt
 vl -t 15 -s 50 httprobe.txt | grep -v "\[50" | grep -oP "http.*" >> httprobe1.txt ; mv httprobe1.txt httprobe.txt ; sort -u httprobe.txt -o httprobe.txt
-vl=`ps -a | grep bash | awk '{print $1}'`
+vl=`ps -a | grep vl | awk '{print $1}'`
 for line in $vl
 do
 kill -9 $line
@@ -40,7 +40,7 @@ sed -e "s/.json/.html/g" /root/script/3_httprobe/httprobe_json.txt >> /root/scri
 cat /root/script/3_httprobe/params_xss_test.txt >> /root/script/3_httprobe/httprobe.txt ; sort -u /root/script/3_httprobe/httprobe.txt -o /root/script/3_httprobe/httprobe.txt ; rm /root/script/3_httprobe/params_xss_test.txt
 ls ; wc -l $input ; du -h
 vl -t 15 -s 50 httprobe.txt | grep -v "\[50" | grep -v "\[404" | grep -oP "http.*" >> httprobe1.txt ; mv httprobe1.txt httprobe.txt ; sort -u httprobe.txt -o httprobe.txt
-vl=`ps -a | grep bash | awk '{print $1}'`
+vl=`ps -a | grep vl | awk '{print $1}'`
 for line in $vl
 do
 kill -9 $line
