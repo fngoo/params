@@ -92,8 +92,8 @@ rm dir_* -r
 rm /root/script/3_httprobe/params_xss_test.txt
 ls ; wc -l $output/xss.txt
 sed "s,https://xsshunternihao.xss.ht,%0d%0aheader:CRLFheader,g" /root/script/3_httprobe/httprobe.txt >> /root/script/3_httprobe/httprob1e.txt ; cat /root/script/3_httprobe/httprob1e.txt >> /root/script/3_httprobe/httprobe.txt ; rm /root/script/3_httprobe/httprob1e.txt
-date "+%Y-%m-%d_%H:%M:%S" >> /root/date.txt ; echo 'params' >> /root/date.txt
-
+cd /root/script/3_httprobe/pentest-tools
+python3 crlf.py -u /root/script/3_httprobe/httprobe.txt -v 1 -t 1 | grep VULN >> $output/CRLF.txt
 #Eyewitness
 cd /root/script/4_getjs
 rm -r EyeWitness
@@ -105,4 +105,6 @@ mkdir /root/z_juice/2_httprobe
 cd /root/script/4_getjs/EyeWitness
 python3 EyeWitness.py -f /root/script/3_httprobe/httprobe.txt --timeout 16 --web --no-prompt -d $output/httprobe
 cp $output/httprobe/screens/* /root/z_juice/2_httprobe
+
+date "+%Y-%m-%d_%H:%M:%S" >> /root/date.txt ; echo 'params' >> /root/date.txt
 exit
