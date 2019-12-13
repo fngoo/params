@@ -2,6 +2,7 @@
 cd /root/script/3_httprobe
 rm -rf /root/script/3_httprobe/Arjun
 git clone https://github.com/s0md3v/Arjun
+curl -L https://github.com/TheKingOfDuck/fuzzDicts/blob/master/paramDict/AllParam.txt | grep -oP '(?<=\ class\=\"blob\-code\ blob\-code\-inner\ js\-file\-line\"\>).*?(?=\<\/td\>)' >> /root/script/3_httprobe/Arjun/db/params.txt ; sort -u /root/script/3_httprobe/Arjun/db/params.txt -o /root/script/3_httprobe/Arjun/db/params.txt
 input=httprobe.txt ; export input=httprobe.txt
 
 i=1
