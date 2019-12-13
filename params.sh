@@ -3,12 +3,7 @@ cd /root/script/3_httprobe
 rm -rf /root/script/3_httprobe/Arjun
 git clone https://github.com/s0md3v/Arjun
 input=httprobe.txt ; export input=httprobe.txt
-vl -t 15 -s 50 httprobe.txt | grep -v "\[50" | grep -oP "http.*" >> httprobe1.txt ; mv httprobe1.txt httprobe.txt ; sort -u httprobe.txt -o httprobe.txt
-vl=`ps -A | grep vl | awk '{print $1}' | sed 's/[[:space:]]//g'`
-for line in $vl
-do
-kill -9 $line
-done
+
 i=1
 num=1
 for line in `cat $input`
